@@ -1,31 +1,38 @@
 import { Menu } from 'antd'
 import { TMenuList } from 'models/types'
 
-import { ReactComponent as OrderSvg } from 'assets/images/orders.svg'
-import { ReactComponent as UserSvg } from 'assets/images/users.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { DashboardOutlined, LockOutlined } from '@ant-design/icons'
+
+const menus: TMenuList = [
+  {
+    icon: <DashboardOutlined />,
+    path: '/admin/dashboard',
+    label: 'Dashboard',
+    accessWith: true, // check by role to display
+  },
+  {
+    icon: <LockOutlined />,
+    path: '/admin/roles-permissions',
+    label: 'Roles and Permissions',
+    accessWith: true,
+    children: [
+      {
+        icon: <DashboardOutlined />,
+        path: '/admin/roles-permissions/roles',
+        label: 'Role management',
+        accessWith: true,
+      },
+    ],
+  },
+]
 
 export const SideBar = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
   const [selectedKey, setSelectedKey] = useState<string>(location.pathname)
-
-  const menus: TMenuList = [
-    {
-      icon: <OrderSvg />,
-      path: '/admin/orders',
-      label: 'Order',
-      accessWith: true,
-    },
-    {
-      icon: <UserSvg />,
-      path: '/admin/users',
-      label: 'Users',
-      accessWith: true,
-    },
-  ]
 
   useEffect(() => {
     setSelectedKey(location.pathname)
@@ -44,11 +51,24 @@ export const SideBar = () => {
       className="layout-page-sider-menu"
       items={menus
         .filter(item => item.accessWith)
-        .map(menu => ({
-          key: menu.path,
-          label: menu.label,
-          icon: menu.icon,
-        }))}
+        .map(menu => {
+          return menu.children
+            ? {
+                icon: menu.icon,
+                key: menu.path,
+                label: menu.label,
+                children: menu.children.map(child => ({
+                  key: child.path,
+                  label: child.label,
+                  icon: menu.icon,
+                })),
+              }
+            : {
+                icon: menu.icon,
+                key: menu.path,
+                label: menu.label,
+              }
+        })}
     />
   )
 }

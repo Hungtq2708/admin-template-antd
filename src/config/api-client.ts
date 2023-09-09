@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { AUTH_SESSION_KEY } from 'constants/constants'
+import { handleError } from 'libs/utils'
 import { storage } from 'libs/web-storage'
 import { TSession } from 'services/auth.type'
 
@@ -7,14 +8,15 @@ const controller = new AbortController()
 
 const apiClient = axios.create({
   baseURL: process.env.REACT_APP_API_URL || '',
-  timeout: 30000,
+  timeout: 10000,
 })
 
 apiClient.interceptors.response.use(
   (response: AxiosRequestConfig) => response.data,
   (error: AxiosError) => {
-    if (error.response) {
+    if (error) {
       controller.abort()
+      handleError(error)
       return Promise.reject(error)
     }
   },

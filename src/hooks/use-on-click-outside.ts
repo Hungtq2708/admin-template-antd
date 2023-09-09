@@ -19,6 +19,5 @@ export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
     return () => {
       document.removeEventListener(mouseEvent, handleClickOutside)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mouseEvent])
+  }, [mouseEvent, ref, handler])
 }

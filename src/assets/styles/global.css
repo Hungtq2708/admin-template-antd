@@ -20,3 +20,37 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
 }
+
+.ant-menu {
+  border: none !important;
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title {
+  margin: 0 !important;
+  margin-bottom: 4px !important;
+  padding-left: 20px !important;
+  width: 100% !important;
+  background-color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.ant-menu-item-selected {
+  border-right: 3px solid #1677ff;
+}
+
+.ant-menu-submenu .ant-menu-item {
+  padding-left: 44px !important;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 0.325rem;
+  height: 0.625rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dfdfdf;
+  height: 0.625rem;
+  border-radius: 0.375rem;
+}

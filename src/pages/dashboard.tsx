@@ -1,4 +1,3 @@
 export const DashboardPage = () => {
-    return <>DashboardPage</>
-  }
-  
+  return <>Dashboard Page</>
+}

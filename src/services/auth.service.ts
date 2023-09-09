@@ -4,8 +4,6 @@ import { ENDPOINTS } from 'constants/endpoints'
 
 const { post } = apiClient
 
-export const login = (data: TLoginSchema) => {
+export const onLogin = (data: TLoginSchema) => {
   return post<unknown, TSession>(ENDPOINTS.AUTH.LOGIN, data)
-
 }
-

@@ -1,6 +1,6 @@
-# Black silver currency exchange shop
+# EDO
 
-The platform focuses on operational automation of currency exchange stores, providing different tools and functions for operators to effectively manage their business and customers' Identities with AML records.
+
 
 ## Convention and Guideline
 
@@ -38,5 +38,5 @@ $ yarn build:prod
 
 ```
 
-Navigate to [http://localhost:3333](http://localhost:3333). The app will automatically reload if you change any of the source files.
+Navigate to [http://localhost:4444](http://localhost:4444). The app will automatically reload if you change any of the source files.
 

@@ -4,6 +4,7 @@ import { Layout } from 'antd'
 import { Header } from './header'
 import { SideBar } from './sidebar'
 import { Outlet } from 'react-router-dom'
+import { LoadingScreen } from './loading-screen'
 
 const { Sider, Content } = Layout
 
@@ -22,12 +23,13 @@ export const LayoutPage: React.FC<LayoutProps> = () => {
           collapsedWidth={80}
           collapsed={false}
           breakpoint="md"
+          width={252}
         >
           <SideBar />
         </Sider>
 
-        <Content className="layout-page-content p-3 border overflow-x-hidden overflow-y-auto">
-          <Suspense fallback={null}>
+        <Content className="layout-page-content p-5 border overflow-x-hidden overflow-y-auto">
+          <Suspense fallback={<LoadingScreen />}>
             <Outlet />
           </Suspense>
         </Content>

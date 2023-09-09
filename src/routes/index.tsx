@@ -10,7 +10,8 @@ import { LayoutPage } from 'components/layout'
 import { DashboardPage } from 'pages/dashboard'
 import { LoginPage } from 'pages/login'
 
-const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ 'pages/404'))
+const NotFound = lazy(() => import('pages/404'))
+const RolePage = lazy(() => import('pages/roles').then(({ RolePage }) => ({ default: RolePage })))
 
 const routes: RouteObject[] = [
   {
@@ -24,7 +25,7 @@ const routes: RouteObject[] = [
 
   {
     path: '/admin',
-    element: <WrapperRouteComponent element={<LayoutPage />} titleId=""  />, //isAuth
+    element: <WrapperRouteComponent element={<LayoutPage />} titleId="" isAuth />,
 
     children: [
       {
@@ -34,6 +35,19 @@ const routes: RouteObject[] = [
       {
         path: 'dashboard',
         element: <WrapperRouteComponent element={<DashboardPage />} titleId="Dashboard" />,
+      },
+      {
+        path: 'roles-permissions',
+        children: [
+          {
+            path: '',
+            element: <Navigate to="roles" />,
+          },
+          {
+            path: 'roles',
+            element: <WrapperRouteComponent element={<RolePage />} titleId="Role management" />,
+          },
+        ],
       },
     ],
   },
