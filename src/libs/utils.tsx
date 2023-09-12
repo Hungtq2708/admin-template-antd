@@ -2,7 +2,8 @@ import { notification } from 'antd'
 import { AxiosError } from 'axios'
 import { AUTH_SESSION_KEY } from 'constants/constants'
 import { storage } from 'libs/web-storage'
-import { ENotification, EResponseCode, TErrorResponse } from 'models/enums'
+import { ENotification, EResponseCode } from 'models/enums'
+import { TErrorResponse } from 'models/types'
 import { ReactNode } from 'react'
 
 export function formatSearch(se: string) {

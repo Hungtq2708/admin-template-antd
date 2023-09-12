@@ -17,33 +17,3 @@ export enum ENotification {
   INFO = 'info',
 }
 
-export type TResponseList<T> = {
-  docs: T[]
-  // metadata: TMetadata[]
-  totalDocs: number
-  limit: number
-  hasPrevPage: true
-  hasNextPage: true
-  page: number
-  totalPages: number
-  offset: number
-  prevPage: number
-  nextPage: number
-  pagingCounter: number
-}
-
-export type TErrorResponse = {
-  data: {
-    code: string
-    httpStatus: EResponseCode
-    message: string
-    statusCode: EResponseCode
-  }
-  statusText: string
-  status: EResponseCode
-}
-
-export type TParamsList = {
-  page: number
-  limit: number
-}
